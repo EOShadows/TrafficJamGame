@@ -22,10 +22,19 @@ public class spawnRoads : MonoBehaviour
         if(direction == "straight"){
             if(player.transform.position.y > transform.position.y-60f){
                 if(Random.Range(1, 10) == 1){
-                    GameObject newRoad = Instantiate(turnPrefab, transform.position, Quaternion.identity) as GameObject;
-                    direction = "right";
-                    newRoad.transform.parent = tilemap.transform;
-                    transform.position = new Vector3(transform.position.x + 10f, transform.position.y + 10f, transform.position.z);
+                    if(Random.Range(1, 3) == 2){
+                        GameObject newRoad = Instantiate(turnPrefab, transform.position, Quaternion.identity) as GameObject;
+                        direction = "right";
+                        newRoad.transform.parent = tilemap.transform;
+                        transform.position = new Vector3(transform.position.x + 10f, transform.position.y + 10f, transform.position.z);
+                    }
+                    else{
+                        transform.position = new Vector3(transform.position.x - 10f, transform.position.y + 10f, transform.position.z);
+                        GameObject newRoad = Instantiate(turnPrefab, transform.position, Quaternion.identity) as GameObject;
+                        newRoad.transform.Rotate(0f, 0f, -90f);
+                        direction = "left";
+                        newRoad.transform.parent = tilemap.transform;
+                    }
                 }
                 else{
                     GameObject newRoad = Instantiate(straightPrefab, transform.position, Quaternion.identity) as GameObject;
@@ -36,7 +45,7 @@ public class spawnRoads : MonoBehaviour
         }
         else if(direction == "right"){
             if(player.transform.position.x > transform.position.x-60f){
-                if(Random.Range(1, 3) == 1){
+                if(Random.Range(1, 4) == 1){
                     transform.position = new Vector3(transform.position.x + 10f, transform.position.y + 10f, transform.position.z);
                     GameObject newRoad = Instantiate(turnPrefab, transform.position, Quaternion.identity) as GameObject;
                     direction = "straight";
@@ -48,6 +57,23 @@ public class spawnRoads : MonoBehaviour
                     newRoad.transform.Rotate(0f, 0f, -90f);
                     newRoad.transform.parent = tilemap.transform;
                     transform.position = new Vector3(transform.position.x + 20f, transform.position.y, transform.position.z);
+                }
+            }
+        }
+        else{
+            if(player.transform.position.x < transform.position.x + 60f){
+                if(Random.Range(1, 4) == 1){
+                    GameObject newRoad = Instantiate(turnPrefab, transform.position, Quaternion.identity) as GameObject;
+                    direction = "straight";
+                    newRoad.transform.Rotate(0f, 0f, 90);
+                    newRoad.transform.parent = tilemap.transform;
+                    transform.position = new Vector3(transform.position.x - 10f, transform.position.y + 10f, transform.position.z);
+                }
+                else{
+                    GameObject newRoad = Instantiate(straightPrefab, transform.position, Quaternion.identity) as GameObject;
+                    newRoad.transform.Rotate(0f, 0f, 90f);
+                    newRoad.transform.parent = tilemap.transform;
+                    transform.position = new Vector3(transform.position.x - 20f, transform.position.y, transform.position.z);
                 }
             }
         }
