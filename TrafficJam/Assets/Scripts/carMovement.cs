@@ -32,7 +32,7 @@ public class carMovement : MonoBehaviour
 
 
         if(Input.GetButton("Drift")){
-            body.velocity = (((transform.up * vertical + Vector3.Normalize(body.velocity)*driftFactor) / (driftFactor+1f))) * speed * Time.fixedDeltaTime;
+            body.velocity = (((transform.up * vertical + Vector3.Normalize(body.velocity)*driftFactor) / (driftFactor+1f))) * speed * Time.fixedDeltaTime * vertical;
         }
         else{
             body.velocity = (transform.up * vertical) * speed * Time.fixedDeltaTime;
@@ -90,7 +90,7 @@ public class carMovement : MonoBehaviour
 
     private void doRotation(float horizontal)
     {
-        transform.Rotate((transform.forward * horizontal * -1f) * rotationSpeed * Time.fixedDeltaTime);
+        transform.Rotate((transform.forward * horizontal * -1f * (body.velocity.magnitude/(speed*Time.fixedDeltaTime))) * rotationSpeed * Time.fixedDeltaTime);
 
         float curRot = transform.rotation.eulerAngles.z;
         float maxTurnConverted = 360 * maxTurn;
