@@ -8879,6 +8879,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: trafficlight (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5031450572282502838, guid: 34c01cfd7d08ae74ea695992bcde2f20, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 34c01cfd7d08ae74ea695992bcde2f20, type: 3}
 --- !u!1 &840665008
@@ -9424,6 +9428,10 @@ PrefabInstance:
     - target: {fileID: 5031450572282502838, guid: 34c01cfd7d08ae74ea695992bcde2f20, type: 3}
       propertyPath: m_Name
       value: trafficlight (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5031450572282502838, guid: 34c01cfd7d08ae74ea695992bcde2f20, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 34c01cfd7d08ae74ea695992bcde2f20, type: 3}
@@ -10490,6 +10498,10 @@ PrefabInstance:
     - target: {fileID: 5031450572282502838, guid: 34c01cfd7d08ae74ea695992bcde2f20, type: 3}
       propertyPath: m_Name
       value: trafficlight
+      objectReference: {fileID: 0}
+    - target: {fileID: 5031450572282502838, guid: 34c01cfd7d08ae74ea695992bcde2f20, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 34c01cfd7d08ae74ea695992bcde2f20, type: 3}

@@ -32,7 +32,7 @@ public class carMovement : MonoBehaviour
 
 
         if(Input.GetButton("Drift")){
-            body.velocity = (((transform.up * vertical + Vector3.Normalize(body.velocity)*driftFactor) / (driftFactor+1f))) * speed * Time.fixedDeltaTime * vertical;
+            body.velocity = (((transform.up * vertical + Vector3.Normalize(body.velocity)*driftFactor) / (driftFactor+1f))) * speed * Time.fixedDeltaTime;
         }
         else{
             body.velocity = (transform.up * vertical) * speed * Time.fixedDeltaTime;
