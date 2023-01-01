@@ -13,6 +13,12 @@ public class carMovement : MonoBehaviour
 
     public float maxTurn = 0.2f;
 
+    public BoxCollider2D range;
+
+    private Vector2 effect = Vector2.zero;
+    private float effectTime = 1;
+    private float effectStarted = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +29,8 @@ public class carMovement : MonoBehaviour
     {
         vertical = Input.GetAxis("Vertical");
         horizontal = Input.GetAxis("Horizontal");
+
+
         if(Input.GetKey(KeyCode.LeftShift)){
             body.velocity = (((transform.up + Vector3.Normalize(body.velocity)*driftFactor) / (driftFactor+1f)) * vertical) * speed * Time.fixedDeltaTime;
         }
@@ -31,9 +39,54 @@ public class carMovement : MonoBehaviour
 
         }
 
+        /*updateEffect();
+        body.velocity += effect;*/
+
         doRotation(horizontal);
     }
 
+    private void updateEffect()
+    {
+        queryEffect();
+
+        float lapse = Time.time - effectStarted;
+        
+    }
+
+    private void queryEffect()
+    {
+
+        float bottomRange = range.transform.position.y - range.size.y / 2;
+        float rightRange = range.transform.position.x + range.size.x / 2;
+        float leftRange = range.transform.position.x - range.size.x / 2;
+
+        bool condition1 = transform.position.y < bottomRange;
+        bool condition2 = transform.position.x > rightRange;
+        bool condition3 = transform.position.x < leftRange;
+
+        if (condition1)
+        {
+            transform.position = new Vector2(transform.position.x, bottomRange);
+            startEffect(Vector2.up * 2, 1);
+        }
+        else if (condition2)
+        {
+            transform.position = new Vector2(rightRange, transform.position.y);
+            startEffect(Vector2.left * 2, 1);
+        }
+        else if (condition3)
+        {
+            transform.position = new Vector2(leftRange, transform.position.y);
+            startEffect(Vector2.right * 2, 1);
+        }
+    }
+
+    private void startEffect(Vector2 effect, float effectLasts)
+    {
+        effectStarted = Time.time;
+        effectTime = effectLasts;
+        //this.effect = effect; 
+    }
 
     private void doRotation(float horizontal)
     {
