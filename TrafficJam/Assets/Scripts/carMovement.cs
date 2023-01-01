@@ -31,8 +31,8 @@ public class carMovement : MonoBehaviour
         horizontal = Input.GetAxis("Horizontal");
 
 
-        if(Input.GetKey(KeyCode.LeftShift)){
-            body.velocity = (((transform.up + Vector3.Normalize(body.velocity)*driftFactor) / (driftFactor+1f)) * vertical) * speed * Time.fixedDeltaTime;
+        if(Input.GetButton("Drift")){
+            body.velocity = (((transform.up * vertical + Vector3.Normalize(body.velocity)*driftFactor) / (driftFactor+1f))) * speed * Time.fixedDeltaTime;
         }
         else{
             body.velocity = (transform.up * vertical) * speed * Time.fixedDeltaTime;
