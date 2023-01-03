@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 3376830092845083383}
   - component: {fileID: 3376830093156319325}
   - component: {fileID: 3376830093156319324}
+  - component: {fileID: 7466760985741634251}
+  - component: {fileID: 1001146585226721467}
   m_Layer: 0
   m_Name: straightTemplate
   m_TagString: Untagged
@@ -1550,3 +1552,50 @@ TilemapRenderer:
   m_Mode: 0
   m_DetectChunkCullingBounds: 0
   m_MaskInteraction: 0
+--- !u!114 &7466760985741634251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3376830093156319323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca16a3b4deaa4a94fab9c2295cfb84d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SpawnType: 0
+  dir: 0
+  amountAtATime: 500
+  cars:
+  - {fileID: 3605815034046675304, guid: 1bf20630beaaa8340961623ecdf82e89, type: 3}
+  - {fileID: 4284452534998614223, guid: 7383cda575bd6684395f4ba0502ccc03, type: 3}
+  - {fileID: 110080244346876017, guid: b340619b2f4f16e4fbb94b66bfe2e58f, type: 3}
+  - {fileID: 3605815034046675304, guid: 1bf20630beaaa8340961623ecdf82e89, type: 3}
+  - {fileID: 110080244346876017, guid: b340619b2f4f16e4fbb94b66bfe2e58f, type: 3}
+--- !u!61 &1001146585226721467
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3376830093156319323}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 10.171009}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 20, y: 20.342018}
+  m_EdgeRadius: 0

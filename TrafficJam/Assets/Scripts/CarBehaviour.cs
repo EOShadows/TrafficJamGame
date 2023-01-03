@@ -25,8 +25,6 @@ public class CarBehaviour : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        rb.velocity = transform.up * speed * Time.fixedDeltaTime;
-        //StartCoroutine(test());
     }
 
     // Update is called once per frame
@@ -42,6 +40,14 @@ public class CarBehaviour : MonoBehaviour
     {
         turnTo(getAngle(dir));
     }
+
+    public void startAt(direction dir)
+    {
+        rb = GetComponent<Rigidbody2D>();
+        transform.rotation = Quaternion.Euler(0, 0, getAngle(dir));
+        rb.velocity = transform.up * speed * Time.fixedDeltaTime;
+    }
+
 
     private IEnumerator test()
     {
