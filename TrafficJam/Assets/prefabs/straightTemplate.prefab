@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3376830093156319324}
   - component: {fileID: 7466760985741634251}
   - component: {fileID: 1001146585226721467}
+  - component: {fileID: 2295903206130987604}
   m_Layer: 0
   m_Name: straightTemplate
   m_TagString: Untagged
@@ -1566,7 +1567,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpawnType: 0
   dir: 0
-  amountAtATime: 500
+  amountAtATime: 4
   cars:
   - {fileID: 3605815034046675304, guid: 1bf20630beaaa8340961623ecdf82e89, type: 3}
   - {fileID: 4284452534998614223, guid: 7383cda575bd6684395f4ba0502ccc03, type: 3}
@@ -1599,3 +1600,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 20, y: 20.342018}
   m_EdgeRadius: 0
+--- !u!114 &2295903206130987604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3376830093156319323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d253aac290a846c58e596012f692f62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
