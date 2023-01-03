@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 6424352670034851650}
   - component: {fileID: 7494910537342016999}
   - component: {fileID: 8056416613951121125}
+  - component: {fileID: 4358054494601133784}
+  - component: {fileID: 3586056068195926068}
   m_Layer: 0
   m_Name: turnTemplate
   m_TagString: Untagged
@@ -632,3 +634,32 @@ TilemapRenderer:
   m_Mode: 0
   m_DetectChunkCullingBounds: 0
   m_MaskInteraction: 0
+--- !u!58 &4358054494601133784
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4358848526362561910}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 1.54, y: 10}
+  serializedVersion: 2
+  m_Radius: 9.47
+--- !u!114 &3586056068195926068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4358848526362561910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92ecde21b9b43074eb7d6b8697265701, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  command: 0

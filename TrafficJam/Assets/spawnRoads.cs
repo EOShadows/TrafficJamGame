@@ -8,6 +8,7 @@ public class spawnRoads : MonoBehaviour
     public GameObject turnPrefab;
     public GameObject player;
     public GameObject tilemap;
+    public GameObject carcommandPrefab;
     public string direction = "straight";
 
     // Start is called before the first frame update
