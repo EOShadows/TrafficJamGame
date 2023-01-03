@@ -10,6 +10,7 @@ public class spawnRoads : MonoBehaviour
     public GameObject tilemap;
     public GameObject carcommandPrefab;
     public string direction = "straight";
+    public GameObject trainPrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -22,7 +23,9 @@ public class spawnRoads : MonoBehaviour
     {
         if(direction == "straight"){
             if(player.transform.position.y > transform.position.y-60f){
+                spawnTrain();
                 if(Random.Range(1, 10) == 1){
+
                     if(Random.Range(1, 3) == 2){
                         GameObject newRoad = Instantiate(turnPrefab, transform.position, Quaternion.identity) as GameObject;
                         direction = "right";
@@ -79,4 +82,12 @@ public class spawnRoads : MonoBehaviour
             }
         }
     }
+
+
+    void spawnTrain(){
+        int rand = Random.Range(1, 10);
+        GameObject newTrain = Instantiate(trainPrefab, new Vector3(transform.position.x + rand, transform.position.y, transform.position.z), Quaternion.identity);
+        GameObject newTrain2 = Instantiate(trainPrefab, new Vector3(transform.position.x - rand, transform.position.y, transform.position.z), Quaternion.identity);
+    }
+
 }
