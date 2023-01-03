@@ -44,8 +44,10 @@ public class CarBehaviour : MonoBehaviour
     public void startAt(direction dir)
     {
         rb = GetComponent<Rigidbody2D>();
+        this.dir = dir;
         transform.rotation = Quaternion.Euler(0, 0, getAngle(dir));
         rb.velocity = transform.up * speed * Time.fixedDeltaTime;
+        directionUpToDate = true;
     }
 
 
@@ -104,6 +106,7 @@ public class CarBehaviour : MonoBehaviour
         }
 
         transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, angle);
+        rb.velocity = transform.up * speed * Time.fixedDeltaTime;
 
         yield return null;
     }
