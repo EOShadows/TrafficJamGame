@@ -18,7 +18,7 @@ public class DeleteAtDistance : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(Vector2.Distance(target.transform.position, transform.position));
+        //Debug.Log(Vector2.Distance(target.transform.position, transform.position));
 
         if ((!below || target.transform.position.y > transform.position.y) && Vector2.Distance(target.transform.position, transform.position) >= distance)
             Destroy(gameObject);
