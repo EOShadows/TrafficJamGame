@@ -55,7 +55,6 @@ public class CarGenerator : MonoBehaviour
 
     private void spawnCar()
     {
-        Debug.Log(gameObject.name);
         GameObject car = Instantiate(cars[Random.Range(0, cars.Length)]);
         car.GetComponent<CarBehaviour>().startAt(dir);
         car.transform.position = getRandomPos();

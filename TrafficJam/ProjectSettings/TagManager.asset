@@ -6,6 +6,8 @@ TagManager:
   tags:
   - turnright
   - turnleft
+  - sideofroad
+  - vehicle
   layers:
   - Default
   - TransparentFX

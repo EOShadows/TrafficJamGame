@@ -21,10 +21,18 @@ public class CarBehaviour : MonoBehaviour
 
     private bool ok = true;
 
+    public float distanceBelowPlayerToDisappear = 200;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+
+        Transform player = GameObject.FindGameObjectWithTag("Player").transform;
+        var dad = gameObject.AddComponent<DeleteAtDistance>();
+        dad.target = player;
+        dad.below = true;
+        dad.distance = distanceBelowPlayerToDisappear;
     }
 
     // Update is called once per frame

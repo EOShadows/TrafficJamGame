@@ -99,6 +99,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 100
   rotateSpeed: 0.5
+  distanceBelowPlayerToDisappear: 150
 --- !u!70 &3857803430352660270
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

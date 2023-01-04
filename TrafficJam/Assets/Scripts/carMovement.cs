@@ -19,6 +19,14 @@ public class carMovement : MonoBehaviour
     private float effectTime = 1;
     private float effectStarted = 0;
 
+    private bool canControl = true;
+    private bool isStunned = false;
+    private bool canBeStunned = true;
+
+    public float wallCrashStunTime = 0.5f;
+    public int wallCrashStunTimePhases = 3;
+    public float timeTilStunnableAgain = 0.5f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,20 +35,25 @@ public class carMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (canControl && !isStunned)
+            doControls();
+    }
+
+    private void doControls()
+    {
         vertical = Input.GetAxis("Vertical");
         horizontal = Input.GetAxis("Horizontal");
 
 
-        if(Input.GetButton("Drift")){
-            body.velocity = (((transform.up * vertical + Vector3.Normalize(body.velocity)*driftFactor) / (driftFactor+1f))) * speed * Time.fixedDeltaTime;
+        if (Input.GetButton("Drift"))
+        {
+            body.velocity = (((transform.up * vertical + Vector3.Normalize(body.velocity) * driftFactor) / (driftFactor + 1f))) * speed * Time.fixedDeltaTime;
         }
-        else{
+        else
+        {
             body.velocity = (transform.up * vertical) * speed * Time.fixedDeltaTime;
 
         }
-
-        /*updateEffect();
-        body.velocity += effect;*/
 
         doRotation(horizontal);
     }
@@ -100,5 +113,65 @@ public class carMovement : MonoBehaviour
         float z = Mathf.Clamp(curRot, ((curRot < 180) ? -1 : 360 - maxTurnConverted), (curRot < 180) ? maxTurnConverted : 361);
 
         transform.rotation = Quaternion.Euler(x, y, z);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "sideofroad" && canBeStunned)
+        {
+            StartCoroutine(turnOffControlsMomentarily());
+        }
+        else if(collision.gameObject.GetComponent<CarBehaviour>() && isStunned)
+        {
+            isStunned = false;
+            StopCoroutine(turnOffControlsMomentarily());
+            StartCoroutine(waitForStun());
+        }
+
+    }
+
+    private IEnumerator turnOffControlsMomentarily()
+    {
+        isStunned = true;
+        yield return null;
+
+        Vector2 speedAtStart = body.velocity;
+
+        float started = Time.time;
+        float lapse = (Time.time - started);
+
+        float phaseTime = wallCrashStunTime / wallCrashStunTimePhases;
+        float slowDownTime = (phaseTime * (wallCrashStunTimePhases - 2));
+
+        int safety = 999999;
+
+        yield return new WaitForSeconds(phaseTime);
+
+        do
+        {
+            yield return null;
+
+            lapse = (Time.time - started);
+            float amount = lapse / slowDownTime;
+            
+
+            body.velocity = Vector2.Lerp(speedAtStart, Vector2.zero, amount);
+            safety--;
+
+        } while (lapse < slowDownTime && safety > 0);
+
+        body.velocity = Vector2.zero;
+
+        yield return new WaitForSeconds(phaseTime);
+
+        isStunned = false;
+        StartCoroutine(waitForStun());
+    }
+
+    private IEnumerator waitForStun()
+    {
+        canBeStunned = false;
+        yield return new WaitForSeconds(timeTilStunnableAgain);
+        canBeStunned = true;
     }
 }
