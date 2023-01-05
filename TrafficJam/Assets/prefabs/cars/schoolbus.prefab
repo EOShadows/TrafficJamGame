@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4284452534998614220}
   - component: {fileID: 4284452534998614221}
   - component: {fileID: 4284452534998614222}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: schoolbus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
