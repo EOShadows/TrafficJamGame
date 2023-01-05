@@ -10,7 +10,10 @@ public class spawnRoads : MonoBehaviour
     public GameObject tilemap;
     public GameObject carcommandPrefab;
     public string direction = "straight";
+
     public GameObject trainPrefab;
+    public GameObject canvas;
+    public GameObject trainWarningPrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -109,6 +112,10 @@ public class spawnRoads : MonoBehaviour
     {
         int rand = Random.Range(1, 10);
         GameObject newTrain = Instantiate(trainPrefab, new Vector3(transform.position.x + rand, transform.position.y, transform.position.z), Quaternion.identity);
+        GameObject newTrainWarning = Instantiate(trainWarningPrefab);
+        newTrainWarning.transform.SetParent(canvas.transform);
+        newTrainWarning.GetComponent<moveWarning>().setCanvas(canvas);
+        newTrainWarning.GetComponent<moveWarning>().setTrack(newTrain);
         GameObject newTrain2 = Instantiate(trainPrefab, new Vector3(transform.position.x - rand, transform.position.y, transform.position.z), Quaternion.identity);
     }
 
