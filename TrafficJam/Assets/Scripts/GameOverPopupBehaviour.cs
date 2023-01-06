@@ -19,7 +19,7 @@ public class GameOverPopupBehaviour : MonoBehaviour
 
     public void quit()
     {
-        Time.timeScale = 1;
+        Time.timeScale = 0;
         Application.Quit();
     }
 

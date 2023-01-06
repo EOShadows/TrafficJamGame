@@ -6,7 +6,8 @@ using UnityEngine.UI;
 public class ScoreBoard : MonoBehaviour
 {
     public float startTime = 60; // in seconds
-    private float time; // in seconds
+    public bool setStart = false;
+    public float time; // in seconds
 
     public int destruction;
 
@@ -21,7 +22,8 @@ public class ScoreBoard : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        time = startTime;
+        if(setStart)
+            time = startTime;
     }
 
     // Update is called once per frame

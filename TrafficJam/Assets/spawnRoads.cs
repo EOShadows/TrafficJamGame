@@ -15,6 +15,9 @@ public class spawnRoads : MonoBehaviour
     public GameObject canvas;
     public GameObject trainWarningPrefab;
 
+    public GameSetup gs;
+    private int roads = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -57,6 +60,8 @@ public class spawnRoads : MonoBehaviour
                     newRoad.GetComponent<CarGenerator>().dir = CarBehaviour.direction.UP;
                     transform.position = new Vector3(transform.position.x, transform.position.y + 20f, transform.position.z);
                 }
+
+                roads++;
             }
         }
         else if (direction == "right")
@@ -80,6 +85,8 @@ public class spawnRoads : MonoBehaviour
                     newRoad.transform.parent = tilemap.transform;
                     transform.position = new Vector3(transform.position.x + 20f, transform.position.y, transform.position.z);
                 }
+
+                roads++;
             }
         }
         else
@@ -103,8 +110,12 @@ public class spawnRoads : MonoBehaviour
                     newRoad.transform.parent = tilemap.transform;
                     transform.position = new Vector3(transform.position.x - 20f, transform.position.y, transform.position.z);
                 }
+
+                roads++;
             }
         }
+
+        Debug.Log(roads);
     }
 
 
