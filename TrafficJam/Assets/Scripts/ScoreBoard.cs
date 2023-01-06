@@ -7,8 +7,16 @@ public class ScoreBoard : MonoBehaviour
 {
     public float startTime = 60; // in seconds
     private float time; // in seconds
+
+    public int destruction;
+
     public Text text;
     public Text textbg;
+
+    public Text text2;
+    public Text textbg2;
+
+    public GameObject gameOverPopup;
 
     // Start is called before the first frame update
     void Start()
@@ -19,9 +27,21 @@ public class ScoreBoard : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        handleTime();
+        handleDestruction();
+    }
+
+    private void handleDestruction()
+    {
+        text2.text = destruction.ToString("00");
+        textbg2.text = text2.text;
+    }
+
+    private void handleTime()
+    {
         time -= Time.deltaTime;
 
-        if(time < 0)
+        if (time < 0)
         {
             time = 0;
             endGameLost();
@@ -33,6 +53,10 @@ public class ScoreBoard : MonoBehaviour
 
     private void endGameLost()
     {
+        ScoreManager.main.timeRemaining = time;
+        ScoreManager.main.destruction = destruction;
 
+        gameOverPopup.SetActive(true);
+        Time.timeScale = 0;
     }
 }
