@@ -57,6 +57,5 @@ public class ScoreBoard : MonoBehaviour
         ScoreManager.main.destruction = destruction;
 
         gameOverPopup.SetActive(true);
-        Time.timeScale = 0;
     }
 }
