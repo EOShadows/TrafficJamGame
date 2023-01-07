@@ -10972,7 +10972,8 @@ MonoBehaviour:
   trainPrefab: {fileID: 2493238547063057276, guid: 004a2fcf434424a7a838becdb58c9f5b, type: 3}
   canvas: {fileID: 761943349}
   trainWarningPrefab: {fileID: 3814243034144350098, guid: 1aa36834b0c824b6d8b815a0f165637b, type: 3}
-  gs: {fileID: 0}
+  gs: {fileID: 1479644834}
+  work: {fileID: 1518196943}
 --- !u!1 &1250400996
 GameObject:
   m_ObjectHideFlags: 0
@@ -11906,6 +11907,11 @@ Transform:
   m_Father: {fileID: 70420594}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1518196943 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1660276072396444439, guid: 7d253843c33e147498fcc2e70b6269e4, type: 3}
+  m_PrefabInstance: {fileID: 1660276072268853921}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1536271257
 GameObject:
   m_ObjectHideFlags: 0

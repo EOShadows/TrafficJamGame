@@ -16,6 +16,7 @@ public class spawnRoads : MonoBehaviour
     public GameObject trainWarningPrefab;
 
     public GameSetup gs;
+    public Transform work;
     private int roads = 0;
 
     // Start is called before the first frame update
@@ -27,6 +28,11 @@ public class spawnRoads : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (roads >= gs.end)
+            return;
+
+        int roadsBef = roads;
+
         if (direction == "straight")
         {
             if (player.transform.position.y > transform.position.y - 60f)
@@ -59,9 +65,9 @@ public class spawnRoads : MonoBehaviour
                     newRoad.transform.parent = tilemap.transform;
                     newRoad.GetComponent<CarGenerator>().dir = CarBehaviour.direction.UP;
                     transform.position = new Vector3(transform.position.x, transform.position.y + 20f, transform.position.z);
-                }
 
-                roads++;
+                    roads++;
+                }
             }
         }
         else if (direction == "right")
@@ -84,9 +90,9 @@ public class spawnRoads : MonoBehaviour
                     newRoad.GetComponent<CarGenerator>().dir = CarBehaviour.direction.RIGHT;
                     newRoad.transform.parent = tilemap.transform;
                     transform.position = new Vector3(transform.position.x + 20f, transform.position.y, transform.position.z);
-                }
 
-                roads++;
+                    roads++;
+                }
             }
         }
         else
@@ -109,11 +115,14 @@ public class spawnRoads : MonoBehaviour
                     newRoad.GetComponent<CarGenerator>().dir = CarBehaviour.direction.LEFT;
                     newRoad.transform.parent = tilemap.transform;
                     transform.position = new Vector3(transform.position.x - 20f, transform.position.y, transform.position.z);
-                }
 
-                roads++;
+                    roads++;
+                }
             }
         }
+
+        if (roadsBef != roads)
+            work.position = transform.position;
 
         Debug.Log(roads);
     }
