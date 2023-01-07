@@ -8,4 +8,5 @@ public class ScoreManager
 
     public int destruction = 0;
     public float timeRemaining = 0;
+    public int day = 1;
 }
