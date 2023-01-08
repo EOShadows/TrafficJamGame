@@ -26,21 +26,33 @@ public class VictoryScript : MonoBehaviour
 
         if (Input.anyKeyDown || Input.GetMouseButtonDown(0))
         {
-            if(!(step == 1 && upgradeSelected == false)){
-                if (step == steps.Length - 1)
-                    SceneManager.LoadScene("GameScene");
-
-                steps[step].SetActive(false);
-                step = Mathf.Min(step + 1, steps.Length - 1);
-                steps[step].SetActive(true);
+            if(!(step == 1)){
+                nextStep();
             }
         }
     }
 
+    private void nextStep(){
+        if (step == steps.Length - 1)
+            SceneManager.LoadScene("GameScene");
+
+        steps[step].SetActive(false);
+        step = Mathf.Min(step + 1, steps.Length - 1);
+        steps[step].SetActive(true);
+    }
+
     public void AddSpeed(){
-        Debug.Log("Called");
+        // Debug.Log("Called");
         GameObject obj = GameObject.Find("pointHolder");
         obj.GetComponent<pointHolder>().speed += 100f;
-        upgradeSelected = true;
+        nextStep();
+        // upgradeSelected = true;
+    }
+
+    public void AddWeight(){
+        GameObject obj = GameObject.Find("pointHolder");
+        obj.GetComponent<pointHolder>().mass *= 10f;
+        nextStep();
+        // upgradeSelected = true;
     }
 }
