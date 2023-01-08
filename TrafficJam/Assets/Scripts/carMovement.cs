@@ -27,12 +27,17 @@ public class carMovement : MonoBehaviour
     public int wallCrashStunTimePhases = 3;
     public float timeTilStunnableAgain = 0.5f;
 
+    public GameObject scoreBoard;
+
     bool dead = false;
 
     // Start is called before the first frame update
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
+        GameObject obj = GameObject.Find("pointHolder");
+        speed = obj.GetComponent<pointHolder>().speed;
+        body.mass = obj.GetComponent<pointHolder>().mass;
     }
 
     void FixedUpdate()
@@ -181,6 +186,7 @@ public class carMovement : MonoBehaviour
 
     public void kill(){
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        scoreBoard.GetComponent<ScoreBoard>().endGameLost();
         dead = true;
         Debug.Log("rip");
     }

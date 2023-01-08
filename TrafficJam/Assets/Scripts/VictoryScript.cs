@@ -9,6 +9,8 @@ public class VictoryScript : MonoBehaviour
     private int step = 0;
     public GameObject[] steps;
 
+    public bool upgradeSelected = false;
+
     public Text txt;
 
     // Start is called before the first frame update
@@ -24,12 +26,21 @@ public class VictoryScript : MonoBehaviour
 
         if (Input.anyKeyDown || Input.GetMouseButtonDown(0))
         {
-            if (step == steps.Length - 1)
-                SceneManager.LoadScene("GameScene");
+            if(!(step == 1 && upgradeSelected == false)){
+                if (step == steps.Length - 1)
+                    SceneManager.LoadScene("GameScene");
 
-            steps[step].SetActive(false);
-            step = Mathf.Min(step + 1, steps.Length - 1);
-            steps[step].SetActive(true);
+                steps[step].SetActive(false);
+                step = Mathf.Min(step + 1, steps.Length - 1);
+                steps[step].SetActive(true);
+            }
         }
+    }
+
+    public void AddSpeed(){
+        Debug.Log("Called");
+        GameObject obj = GameObject.Find("pointHolder");
+        obj.GetComponent<pointHolder>().speed += 100f;
+        upgradeSelected = true;
     }
 }

@@ -53,7 +53,7 @@ public class ScoreBoard : MonoBehaviour
         textbg.text = text.text;
     }
 
-    private void endGameLost()
+    public void endGameLost()
     {
         ScoreManager.main.timeRemaining = time;
         ScoreManager.main.destruction = destruction;

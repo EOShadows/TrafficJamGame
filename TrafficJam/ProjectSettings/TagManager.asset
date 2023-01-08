@@ -8,6 +8,7 @@ TagManager:
   - turnleft
   - sideofroad
   - vehicle
+  - scoreKeeper
   layers:
   - Default
   - TransparentFX
