@@ -124,7 +124,6 @@ public class spawnRoads : MonoBehaviour
         if (roadsBef != roads)
             work.position = transform.position;
 
-        Debug.Log(roads);
     }
 
 
@@ -136,7 +135,13 @@ public class spawnRoads : MonoBehaviour
         newTrainWarning.transform.SetParent(canvas.transform);
         newTrainWarning.GetComponent<moveWarning>().setCanvas(canvas);
         newTrainWarning.GetComponent<moveWarning>().setTrack(newTrain);
+        newTrain.transform.GetChild(0).gameObject.GetComponent<detectCollision>().warning = newTrainWarning;
         GameObject newTrain2 = Instantiate(trainPrefab, new Vector3(transform.position.x - rand, transform.position.y, transform.position.z), Quaternion.identity);
+        GameObject newTrainWarning2 = Instantiate(trainWarningPrefab);
+        newTrainWarning2.transform.SetParent(canvas.transform);
+        newTrainWarning2.GetComponent<moveWarning>().setCanvas(canvas);
+        newTrainWarning2.GetComponent<moveWarning>().setTrack(newTrain2);
+        newTrain2.transform.GetChild(0).gameObject.GetComponent<detectCollision>().warning = newTrainWarning2;
     }
 
 }

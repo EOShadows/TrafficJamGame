@@ -24,7 +24,7 @@ public class PlayerWarningTracker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(faultInAction + " " + Mathf.Abs(faultBegan.y - player.position.y));
+        // Debug.Log(faultInAction + " " + Mathf.Abs(faultBegan.y - player.position.y));
 
         if (!faultInAction)
             faultInAction = playerRb.velocity.y < 0;

@@ -27,6 +27,8 @@ public class carMovement : MonoBehaviour
     public int wallCrashStunTimePhases = 3;
     public float timeTilStunnableAgain = 0.5f;
 
+    bool dead = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -44,8 +46,10 @@ public class carMovement : MonoBehaviour
         vertical = Input.GetAxis("Vertical");
         horizontal = Input.GetAxis("Horizontal");
 
-
-        if (Input.GetButton("Drift"))
+        if (dead){
+            body.velocity = new Vector3(0f, 0f, 0f);
+        }
+        else if (Input.GetButton("Drift"))
         {
             body.velocity = (((transform.up * vertical + Vector3.Normalize(body.velocity) * driftFactor) / (driftFactor + 1f))) * speed * Time.fixedDeltaTime;
         }
@@ -173,5 +177,11 @@ public class carMovement : MonoBehaviour
         canBeStunned = false;
         yield return new WaitForSeconds(timeTilStunnableAgain);
         canBeStunned = true;
+    }
+
+    public void kill(){
+        gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        dead = true;
+        Debug.Log("rip");
     }
 }
