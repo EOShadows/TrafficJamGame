@@ -44,7 +44,7 @@ public class VictoryScript : MonoBehaviour
     public void AddSpeed(){
         // Debug.Log("Called");
         GameObject obj = GameObject.Find("pointHolder");
-        obj.GetComponent<pointHolder>().speed += 100f;
+        obj.GetComponent<pointHolder>().speed += 50f;
         nextStep();
         // upgradeSelected = true;
     }
